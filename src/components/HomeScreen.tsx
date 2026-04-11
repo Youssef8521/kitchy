@@ -3,14 +3,9 @@ import {
   Check,
   Flame,
   Gift,
-  Home,
   RotateCcw,
-  Search,
-  ShoppingCart,
   Sparkles,
   Star,
-  User,
-  FileText,
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { CHEFS } from '../data/chefs'
@@ -56,21 +51,18 @@ const vendors = CHEFS.map((c) => ({
 
 export function HomeScreen() {
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[390px] flex-col bg-cream shadow-xl ring-1 ring-black/5">
-      <main className="flex-1 overflow-y-auto px-4 pb-28 pt-3 scrollbar-hide">
-        <div className="sticky top-0 z-40 -mx-4 mb-3 flex justify-end bg-gradient-to-b from-cream from-80% to-transparent px-4 pb-2 pt-1">
-          <ThemePicker />
-        </div>
-        <LivePrepBanner />
-        <ReorderCard chefId="mama-karima" />
-        <CategoryChips />
-        <TasteCulture />
-        <BlindTastingBanner />
-        <RecoveryCard />
-        <VanguardSection />
-      </main>
-      <BottomNav />
-    </div>
+    <main className="min-h-0 flex-1 overflow-y-auto px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-3 scrollbar-hide">
+      <div className="sticky top-0 z-40 -mx-4 mb-3 flex justify-end bg-gradient-to-b from-cream from-80% to-transparent px-4 pb-2 pt-1">
+        <ThemePicker />
+      </div>
+      <LivePrepBanner />
+      <ReorderCard chefId="mama-karima" />
+      <CategoryChips />
+      <TasteCulture />
+      <BlindTastingBanner />
+      <RecoveryCard />
+      <VanguardSection />
+    </main>
   )
 }
 
@@ -348,43 +340,5 @@ function VendorCard({ vendor }: { vendor: Vendor }) {
         </div>
       </div>
     </article>
-  )
-}
-
-function BottomNav() {
-  const item =
-    'flex flex-1 flex-col items-center gap-1 py-2 text-[10px] font-medium'
-
-  return (
-    <nav
-      className="fixed bottom-0 left-1/2 z-20 flex w-full max-w-[390px] -translate-x-1/2 border-t border-gray-100 bg-white px-2 pt-1 pb-[max(0.5rem,env(safe-area-inset-bottom))] shadow-[0_-4px_24px_rgba(0,0,0,0.06)]"
-      aria-label="Main"
-    >
-      <a href="#" className={`${item} text-navy`}>
-        <Home className="size-6 text-orange" strokeWidth={2.25} aria-hidden />
-        Home
-      </a>
-      <a href="#" className={`${item} text-text-muted`}>
-        <Search className="size-6" strokeWidth={2} aria-hidden />
-        Discover
-      </a>
-      <a href="#" className={`${item} relative text-text-muted`}>
-        <span className="relative">
-          <ShoppingCart className="size-6" strokeWidth={2} aria-hidden />
-          <span className="absolute -right-2 -top-1 flex size-[18px] items-center justify-center rounded-full bg-red-600 text-[10px] font-bold text-white">
-            2
-          </span>
-        </span>
-        Cart
-      </a>
-      <a href="#" className={`${item} text-text-muted`}>
-        <FileText className="size-6" strokeWidth={2} aria-hidden />
-        My Orders
-      </a>
-      <a href="#" className={`${item} text-text-muted`}>
-        <User className="size-6" strokeWidth={2} aria-hidden />
-        Profile
-      </a>
-    </nav>
   )
 }

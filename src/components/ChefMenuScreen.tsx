@@ -5,18 +5,22 @@ import {
   Calendar,
   Check,
   Clock,
+  Minus,
+  Plus,
   Scale,
   Sparkles,
   Star,
   Users,
   UsersRound,
 } from 'lucide-react'
+import { useCart } from '../cart/CartContext'
 import { getChefById } from '../data/chefs'
 import type { ChefProfile, MenuDish } from '../data/chefs'
 
 export function ChefMenuScreen() {
   const { chefId } = useParams<{ chefId: string }>()
   const navigate = useNavigate()
+  const { bumpDish, getDishQty } = useCart()
   const chef = chefId ? getChefById(chefId) : undefined
 
   const [menuTab, setMenuTab] = useState<'full' | 'choice'>('full')
@@ -26,7 +30,7 @@ export function ChefMenuScreen() {
 
   if (!chef) {
     return (
-      <div className="mx-auto flex min-h-dvh w-full max-w-[390px] flex-col items-center justify-center gap-4 bg-cream px-6 text-center">
+      <main className="flex flex-1 flex-col items-center justify-center gap-4 px-6 pb-[calc(5.75rem+env(safe-area-inset-bottom))] text-center">
         <p className="text-[15px] font-semibold text-navy">Chef not found</p>
         <Link
           to="/"
@@ -34,7 +38,7 @@ export function ChefMenuScreen() {
         >
           Back to home
         </Link>
-      </div>
+      </main>
     )
   }
 
@@ -42,7 +46,7 @@ export function ChefMenuScreen() {
     menuTab === 'full' ? chef.signatureDishes : chef.cooksChoice
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-[390px] flex-col bg-cream shadow-xl ring-1 ring-black/5">
+    <div className="flex min-h-0 flex-1 flex-col">
       <header className="sticky top-0 z-30 flex items-center gap-2 bg-cream/95 px-3 py-2.5 backdrop-blur-sm">
         <button
           type="button"
@@ -57,7 +61,7 @@ export function ChefMenuScreen() {
         </span>
       </header>
 
-      <main className="flex-1 overflow-y-auto px-4 pb-36 pt-1 scrollbar-hide">
+      <main className="flex-1 overflow-y-auto px-4 pb-[calc(8.5rem+env(safe-area-inset-bottom))] pt-1 scrollbar-hide">
         <HeroBlock chef={chef} />
 
         <p className="mb-3 text-[13px] leading-relaxed text-navy">
@@ -137,7 +141,12 @@ export function ChefMenuScreen() {
           <ul className="mb-6 flex flex-col gap-3">
             {dishes.map((d) => (
               <li key={d.id}>
-                <DishRow dish={d} />
+                <DishRow
+                  dish={d}
+                  quantity={getDishQty(chef.id, d.id)}
+                  onIncrement={() => bumpDish(chef.id, d.id, 1)}
+                  onDecrement={() => bumpDish(chef.id, d.id, -1)}
+                />
               </li>
             ))}
           </ul>
@@ -162,7 +171,7 @@ export function ChefMenuScreen() {
         <BuildAPlate chefName={chef.name} plate={chef.buildAPlate} />
       </main>
 
-      <div className="pointer-events-none fixed bottom-0 left-1/2 z-20 flex w-full max-w-[390px] -translate-x-1/2 justify-center gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+      <div className="pointer-events-none fixed bottom-[calc(5.75rem+env(safe-area-inset-bottom))] left-1/2 z-30 flex w-full max-w-[390px] -translate-x-1/2 justify-center gap-3 px-4">
         <button
           type="button"
           className="pointer-events-auto inline-flex items-center gap-2 rounded-full border-2 border-navy bg-white px-4 py-3 text-[11px] font-bold text-navy shadow-lg"
@@ -236,9 +245,19 @@ function HeroBlock({ chef }: { chef: ChefProfile }) {
   )
 }
 
-function DishRow({ dish }: { dish: MenuDish }) {
+function DishRow({
+  dish,
+  quantity,
+  onIncrement,
+  onDecrement,
+}: {
+  dish: MenuDish
+  quantity: number
+  onIncrement: () => void
+  onDecrement: () => void
+}) {
   return (
-    <article className="flex gap-3 rounded-2xl bg-white p-3 shadow-[0_6px_24px_rgb(0,0,0,0.05)] ring-1 ring-black/[0.04]">
+    <article className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-[0_6px_24px_rgb(0,0,0,0.05)] ring-1 ring-black/[0.04]">
       <img
         src={dish.image}
         alt=""
@@ -258,7 +277,66 @@ function DishRow({ dish }: { dish: MenuDish }) {
           {dish.priceEgp} EGP
         </p>
       </div>
+      <DishQuantityControl
+        quantity={quantity}
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
+        label={dish.name}
+      />
     </article>
+  )
+}
+
+function DishQuantityControl({
+  quantity,
+  onIncrement,
+  onDecrement,
+  label,
+}: {
+  quantity: number
+  onIncrement: () => void
+  onDecrement: () => void
+  label: string
+}) {
+  if (quantity === 0) {
+    return (
+      <button
+        type="button"
+        onClick={onIncrement}
+        aria-label={`Add ${label} to cart`}
+        className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#9d174d] text-white shadow-md ring-1 ring-[#9d174d]/30"
+      >
+        <Plus className="size-[1.15rem]" strokeWidth={2.75} aria-hidden />
+      </button>
+    )
+  }
+
+  return (
+    <div
+      className="flex h-10 shrink-0 items-center gap-0.5 rounded-full bg-white py-1 pl-1 pr-1 shadow-md ring-1 ring-black/[0.08]"
+      role="group"
+      aria-label={`Quantity for ${label}`}
+    >
+      <button
+        type="button"
+        onClick={onDecrement}
+        aria-label="Decrease quantity"
+        className="flex size-8 items-center justify-center rounded-full bg-rose-50 text-red-600 transition-colors hover:bg-rose-100"
+      >
+        <Minus className="size-4" strokeWidth={2.75} aria-hidden />
+      </button>
+      <span className="min-w-[1.5rem] px-0.5 text-center text-[15px] font-semibold tabular-nums text-navy">
+        {quantity}
+      </span>
+      <button
+        type="button"
+        onClick={onIncrement}
+        aria-label="Increase quantity"
+        className="flex size-8 items-center justify-center rounded-full bg-[#9d174d] text-white shadow-sm ring-1 ring-[#9d174d]/25 transition-colors hover:bg-[#831843]"
+      >
+        <Plus className="size-4" strokeWidth={2.75} aria-hidden />
+      </button>
+    </div>
   )
 }
 
