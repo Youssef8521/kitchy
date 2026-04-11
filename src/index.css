@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+/* Default palette before JS runs (matches themes.ts default) */
+:root {
+  --app-cream: #fdfbf7;
+  --app-navy: #1a2744;
+  --app-navy-muted: #2d3f5c;
+  --app-orange: #e86b2b;
+  --app-orange-soft: #ff8f4a;
+  --app-text-muted: #6b7280;
+  --app-reorder-from: #2b4a8f;
+  --app-reorder-to: #6ba3f5;
+  --app-live-from: #e86b2b;
+  --app-live-via: #f0a038;
+  --app-live-to: #f5c542;
+  --app-blind-glow: rgba(232, 107, 43, 0.55);
+  --app-chrome: #ebe8e2;
+}
+
+@theme {
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-cream: var(--app-cream);
+  --color-navy: var(--app-navy);
+  --color-navy-muted: var(--app-navy-muted);
+  --color-orange: var(--app-orange);
+  --color-orange-soft: var(--app-orange-soft);
+  --color-text-muted: var(--app-text-muted);
+  --color-chrome: var(--app-chrome);
+  --color-reorder-from: var(--app-reorder-from);
+  --color-reorder-to: var(--app-reorder-to);
+  --color-live-from: var(--app-live-from);
+  --color-live-via: var(--app-live-via);
+  --color-live-to: var(--app-live-to);
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+  body {
+    @apply m-0 min-h-dvh bg-cream text-navy font-sans;
+  }
+  #root {
+    @apply min-h-dvh;
+  }
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
