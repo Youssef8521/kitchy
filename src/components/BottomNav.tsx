@@ -31,7 +31,7 @@ export function BottomNav() {
             <Home
               className="size-6"
               strokeWidth={isActive ? 2.5 : 2}
-              fill={isActive ? 'currentColor' : 'none'}
+              fill="none"
               aria-hidden
             />
             Home
