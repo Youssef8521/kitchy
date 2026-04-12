@@ -179,6 +179,38 @@ export const strawberryPalette = {
   butterWash: '#f2f2dc',
 } as const
 
+/**
+ * Custom Tomato theme — Pear / Tomato / Honey / Sage.
+ * Hex notes from your message (normalized to 6-digit #RRGGBB):
+ * - Pear `C30A3` → `#c3a503` (golden pear; 5-char input completed)
+ * - Tomato `C6463` → `#c66463` (dusty tomato)
+ * - Honey `224C599` → `#f2c599` (amber honey; reads like a missing leading `F`)
+ * - Sage `9AA98` → `#9aa985` (muted sage; 5-char input completed)
+ */
+export const tomatoPalette = {
+  pear: '#c3a503',
+  tomato: '#c66463',
+  honey: '#f2c599',
+  sage: '#9aa985',
+  tomatoMuted: '#a85553',
+  textMuted: '#6b5e4a',
+  midTomatoPear: '#b5852b',
+  midSagePear: '#b1a894',
+  chromeHoney: '#e8d5a8',
+} as const
+
+/** Tomato 2 — exact swatches you provided */
+export const tomato2Palette = {
+  sage: '#929e6c',
+  honey: '#f9cd90',
+  tomato: '#c05123',
+  pear: '#f69f2b',
+  tomatoMuted: '#9d451e',
+  textMuted: '#6a5c45',
+  midSagePear: '#c9a34c',
+  chromeHoney: '#f0d9a8',
+} as const
+
 /** Legacy id from earlier builds → keeps localStorage working */
 const LEGACY_THEME_IDS: Record<string, string> = {
   botanical: 'pear-tomato-original',
@@ -1048,6 +1080,80 @@ export const themes: ThemeDefinition[] = [
       liveTo: strawberryPalette.cherry,
       blindGlow: 'rgba(158, 178, 0, 0.38)',
       chrome: strawberryPalette.chromeDeep,
+    },
+  },
+  {
+    id: 'tomato',
+    label: 'Tomato',
+    vars: {
+      /* Honey canvas; tomato for headings, active chips, tab labels & primary accents */
+      cream: tomatoPalette.honey,
+      navy: tomatoPalette.tomato,
+      navyMuted: tomatoPalette.tomatoMuted,
+      orange: tomatoPalette.tomato,
+      orangeSoft: tomatoPalette.pear,
+      textMuted: tomatoPalette.textMuted,
+      reorderFrom: tomatoPalette.tomato,
+      reorderTo: tomatoPalette.pear,
+      liveFrom: tomatoPalette.sage,
+      liveVia: tomatoPalette.midSagePear,
+      liveTo: tomatoPalette.honey,
+      blindGlow: 'rgba(198, 100, 99, 0.45)',
+      chrome: tomatoPalette.chromeHoney,
+    },
+  },
+  {
+    id: 'tomato-2',
+    label: 'Tomato 2',
+    vars: {
+      cream: tomato2Palette.honey,
+      navy: tomato2Palette.tomato,
+      navyMuted: tomato2Palette.tomatoMuted,
+      orange: tomato2Palette.tomato,
+      orangeSoft: tomato2Palette.pear,
+      textMuted: tomato2Palette.textMuted,
+      reorderFrom: tomato2Palette.tomato,
+      reorderTo: tomato2Palette.pear,
+      liveFrom: tomato2Palette.sage,
+      liveVia: tomato2Palette.midSagePear,
+      liveTo: tomato2Palette.honey,
+      blindGlow: 'rgba(192, 81, 35, 0.45)',
+      chrome: tomato2Palette.chromeHoney,
+    },
+  },
+  {
+    id: 'tomato-3',
+    label: 'Tomato 3',
+    vars: {
+      cream: '#f4f1ea',
+      chrome: '#e6eae0',
+      navy: '#3c3834',
+      navyMuted: '#5c5651',
+      orange: tomato2Palette.tomato,
+      orangeSoft: tomato2Palette.pear,
+      textMuted: '#6d665e',
+      reorderFrom: tomato2Palette.tomato,
+      reorderTo: tomato2Palette.tomato,
+      liveFrom: tomato2Palette.tomato,
+      liveVia: '#d45828',
+      liveTo: tomato2Palette.tomato,
+      blindGlow: 'rgba(246, 159, 43, 0.32)',
+      pageBg: '#f4f1ea',
+      surfaceCard: '#fffdf8',
+      surfaceHoney: '#fef5e8',
+      textPrimary: '#3c3834',
+      textSecondary: '#6d665e',
+      borderSubtle: '#d4d9c8',
+      sageSoft: '#eef0ea',
+      sageBorder: '#c5cbb8',
+      navInactive: '#8a9378',
+      pearAccent: tomato2Palette.pear,
+      promoBg: '#4a5248',
+      chipSelectedBg: tomato2Palette.tomato,
+      liveBadge: tomato2Palette.tomato,
+      cartBadge: tomato2Palette.pear,
+      thumbRing: 'rgba(249, 205, 144, 0.45)',
+      liveIconWell: 'rgba(255, 255, 255, 0.2)',
     },
   },
 ]

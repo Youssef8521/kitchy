@@ -9,7 +9,7 @@ import { PlaceholderScreen } from './components/PlaceholderScreen'
 function AppLayout() {
   return (
     <div className="min-h-dvh bg-chrome">
-      <div className="mx-auto flex min-h-dvh w-full max-w-[390px] flex-col bg-cream shadow-xl ring-1 ring-black/5">
+      <div className="mx-auto flex min-h-dvh w-full max-w-[390px] flex-col bg-cream shadow-xl ring-1 ring-border-subtle">
         <Outlet />
       </div>
       <BottomNav />

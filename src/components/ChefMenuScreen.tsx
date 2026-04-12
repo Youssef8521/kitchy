@@ -31,10 +31,10 @@ export function ChefMenuScreen() {
   if (!chef) {
     return (
       <main className="flex flex-1 flex-col items-center justify-center gap-4 px-6 pb-[calc(5.75rem+env(safe-area-inset-bottom))] text-center">
-        <p className="text-[15px] font-semibold text-navy">Chef not found</p>
+        <p className="text-[15px] font-semibold text-text-primary">Chef not found</p>
         <Link
           to="/"
-          className="rounded-full bg-navy px-5 py-2.5 text-[13px] font-bold text-white"
+          className="rounded-full bg-orange px-5 py-2.5 text-[13px] font-bold text-white transition hover:brightness-110"
         >
           Back to home
         </Link>
@@ -51,7 +51,7 @@ export function ChefMenuScreen() {
         <button
           type="button"
           onClick={() => navigate('/')}
-          className="flex size-10 items-center justify-center rounded-full bg-white text-navy shadow-sm ring-1 ring-black/5"
+          className="flex size-10 items-center justify-center rounded-full border border-sage-border bg-surface-card text-text-primary shadow-sm"
           aria-label="Back to home"
         >
           <ArrowLeft className="size-5" strokeWidth={2.25} />
@@ -64,24 +64,24 @@ export function ChefMenuScreen() {
       <main className="flex-1 overflow-y-auto px-4 pb-[calc(8.5rem+env(safe-area-inset-bottom))] pt-1 scrollbar-hide">
         <HeroBlock chef={chef} />
 
-        <p className="mb-3 text-[13px] leading-relaxed text-navy">
+        <p className="mb-3 text-[13px] leading-relaxed text-text-primary">
           {chef.bio}
         </p>
 
         <div className="mb-3 flex flex-wrap gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1.5 text-[10px] font-bold tracking-wide text-emerald-800 ring-1 ring-emerald-100">
-            <Check className="size-3.5 text-emerald-600" strokeWidth={2.5} />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-3 py-1.5 text-[10px] font-bold tracking-wide text-text-primary ring-1 ring-sage-border">
+            <Check className="size-3.5 text-pear-accent" strokeWidth={2.5} />
             {chef.verifiedLabel}
           </span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-sky-50 px-3 py-1.5 text-[10px] font-bold tracking-wide text-sky-900 ring-1 ring-sky-100">
-            <Users className="size-3.5 text-sky-700" strokeWidth={2.25} />
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-sage-soft px-3 py-1.5 text-[10px] font-bold tracking-wide text-text-primary ring-1 ring-sage-border">
+            <Users className="size-3.5 text-navy-muted" strokeWidth={2.25} />
             {chef.repeatCustomersLabel}
           </span>
         </div>
 
         {chef.cfaBanner ? (
-          <div className="mb-5 flex items-center justify-center gap-2 rounded-2xl bg-orange-50 px-3 py-2.5 text-[11px] font-bold tracking-wide text-orange-900 ring-1 ring-orange-100">
-            <Scale className="size-4 shrink-0 text-orange" strokeWidth={2.25} />
+          <div className="mb-5 flex items-center justify-center gap-2 rounded-2xl border border-sage-border bg-surface-honey px-3 py-2.5 text-[11px] font-bold tracking-wide text-orange">
+            <Scale className="size-4 shrink-0 text-pear-accent" strokeWidth={2.25} />
             {chef.cfaBanner}
           </div>
         ) : null}
@@ -92,8 +92,8 @@ export function ChefMenuScreen() {
             onClick={() => setMenuTab('full')}
             className={`flex-1 rounded-full py-3 text-[12px] font-bold tracking-wide transition-colors ${
               menuTab === 'full'
-                ? 'bg-white text-navy shadow-md ring-1 ring-black/[0.06]'
-                : 'bg-white/60 text-text-muted ring-1 ring-black/[0.04]'
+                ? 'bg-chip-selected text-white shadow-md'
+                : 'border border-sage-border bg-sage-soft text-text-secondary'
             }`}
           >
             FULL MENU
@@ -103,8 +103,8 @@ export function ChefMenuScreen() {
             onClick={() => setMenuTab('choice')}
             className={`flex flex-1 items-center justify-center gap-1.5 rounded-full py-3 text-[12px] font-bold tracking-wide transition-colors ${
               menuTab === 'choice'
-                ? 'bg-white text-navy shadow-md ring-1 ring-black/[0.06]'
-                : 'bg-white/60 text-text-muted ring-1 ring-black/[0.04]'
+                ? 'bg-chip-selected text-white shadow-md'
+                : 'border border-sage-border bg-sage-soft text-text-secondary'
             }`}
           >
             <Sparkles className="size-3.5" strokeWidth={2.5} />
@@ -112,14 +112,14 @@ export function ChefMenuScreen() {
           </button>
         </div>
 
-        <div className="mb-4 flex gap-6 border-b border-gray-200/80">
+        <div className="mb-4 flex gap-6 border-b border-border-subtle">
           <button
             type="button"
             onClick={() => setSectionTab('signature')}
             className={`relative pb-2.5 text-[13px] font-bold ${
               sectionTab === 'signature'
-                ? 'text-navy after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-orange'
-                : 'text-text-muted'
+                ? 'text-text-primary after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-orange'
+                : 'text-text-secondary'
             }`}
           >
             {menuTab === 'full' ? 'Signature Dishes' : "Chef's picks"}
@@ -129,8 +129,8 @@ export function ChefMenuScreen() {
             onClick={() => setSectionTab('wall')}
             className={`relative pb-2.5 text-[13px] font-bold ${
               sectionTab === 'wall'
-                ? 'text-navy after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-orange'
-                : 'text-text-muted'
+                ? 'text-text-primary after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:rounded-full after:bg-orange'
+                : 'text-text-secondary'
             }`}
           >
             Wall of Love
@@ -155,9 +155,9 @@ export function ChefMenuScreen() {
             {chef.wallOfLove.map((w, i) => (
               <li
                 key={i}
-                className="rounded-2xl bg-white p-4 shadow-[0_6px_24px_rgb(0,0,0,0.05)] ring-1 ring-black/[0.04]"
+                className="rounded-2xl border border-sage-border/60 bg-surface-card p-4 shadow-[0_6px_24px_rgb(0,0,0,0.05)]"
               >
-                <p className="text-[13px] leading-relaxed text-navy">
+                <p className="text-[13px] leading-relaxed text-text-primary">
                   &ldquo;{w.quote}&rdquo;
                 </p>
                 <p className="mt-2 text-[11px] font-semibold text-text-muted">
@@ -174,14 +174,14 @@ export function ChefMenuScreen() {
       <div className="pointer-events-none fixed bottom-[calc(5.75rem+env(safe-area-inset-bottom))] left-1/2 z-30 flex w-full max-w-[390px] -translate-x-1/2 justify-center gap-3 px-4">
         <button
           type="button"
-          className="pointer-events-auto inline-flex items-center gap-2 rounded-full border-2 border-navy bg-white px-4 py-3 text-[11px] font-bold text-navy shadow-lg"
+          className="pointer-events-auto inline-flex items-center gap-2 rounded-full border-2 border-orange bg-surface-card px-4 py-3 text-[11px] font-bold text-orange shadow-lg transition hover:bg-sage-soft"
         >
           <UsersRound className="size-4 shrink-0" strokeWidth={2.25} />
           Squad Ghost Cart
         </button>
         <button
           type="button"
-          className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-navy px-4 py-3 text-[11px] font-bold text-white shadow-lg"
+          className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-orange px-4 py-3 text-[11px] font-bold text-white shadow-lg transition hover:brightness-110"
         >
           <Calendar className="size-4 shrink-0" strokeWidth={2} />
           Lock in Delivery
@@ -193,7 +193,7 @@ export function ChefMenuScreen() {
 
 function HeroBlock({ chef }: { chef: ChefProfile }) {
   return (
-    <div className="relative mb-4 overflow-hidden rounded-3xl ring-1 ring-black/[0.06]">
+    <div className="relative mb-4 overflow-hidden rounded-3xl border border-sage-border/60">
       <div className="relative aspect-[16/11] w-full overflow-hidden">
         <img
           src={chef.hero}
@@ -203,7 +203,7 @@ function HeroBlock({ chef }: { chef: ChefProfile }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/20" />
         {chef.live ? (
-          <div className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+          <div className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-live-badge px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
             <span className="size-1.5 rounded-full bg-white" aria-hidden />
             LIVE
           </div>
@@ -228,7 +228,7 @@ function HeroBlock({ chef }: { chef: ChefProfile }) {
             <div className="mt-2 flex flex-wrap gap-2">
               <span className="inline-flex items-center gap-1 rounded-full bg-black/45 px-2.5 py-1 text-[11px] font-bold backdrop-blur-sm">
                 <Star
-                  className="size-3.5 fill-orange text-orange"
+                  className="size-3.5 fill-pear-accent text-pear-accent"
                   strokeWidth={0}
                 />
                 {chef.rating}
@@ -257,7 +257,7 @@ function DishRow({
   onDecrement: () => void
 }) {
   return (
-    <article className="flex items-center gap-3 rounded-2xl bg-white p-3 shadow-[0_6px_24px_rgb(0,0,0,0.05)] ring-1 ring-black/[0.04]">
+    <article className="flex items-center gap-3 rounded-2xl border border-sage-border/60 bg-surface-card p-3 shadow-[0_6px_24px_rgb(0,0,0,0.05)]">
       <img
         src={dish.image}
         alt=""
@@ -265,7 +265,7 @@ function DishRow({
         loading="lazy"
       />
       <div className="flex min-w-0 flex-1 flex-col justify-center">
-        <h3 className="text-[14px] font-bold leading-snug text-navy">
+        <h3 className="text-[14px] font-bold leading-snug text-text-primary">
           {dish.name}
         </h3>
         {dish.description ? (
@@ -304,7 +304,7 @@ function DishQuantityControl({
         type="button"
         onClick={onIncrement}
         aria-label={`Add ${label} to cart`}
-        className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#9d174d] text-white shadow-md ring-1 ring-[#9d174d]/30"
+        className="flex size-10 shrink-0 items-center justify-center rounded-full bg-orange text-white shadow-md transition hover:brightness-110"
       >
         <Plus className="size-[1.15rem]" strokeWidth={2.75} aria-hidden />
       </button>
@@ -313,7 +313,7 @@ function DishQuantityControl({
 
   return (
     <div
-      className="flex h-10 shrink-0 items-center gap-0.5 rounded-full bg-white py-1 pl-1 pr-1 shadow-md ring-1 ring-black/[0.08]"
+      className="flex h-10 shrink-0 items-center gap-0.5 rounded-full border border-sage-border bg-surface-card py-1 pl-1 pr-1 shadow-md"
       role="group"
       aria-label={`Quantity for ${label}`}
     >
@@ -321,18 +321,18 @@ function DishQuantityControl({
         type="button"
         onClick={onDecrement}
         aria-label="Decrease quantity"
-        className="flex size-8 items-center justify-center rounded-full bg-rose-50 text-red-600 transition-colors hover:bg-rose-100"
+        className="flex size-8 items-center justify-center rounded-full bg-sage-soft text-orange transition-colors hover:bg-surface-honey"
       >
         <Minus className="size-4" strokeWidth={2.75} aria-hidden />
       </button>
-      <span className="min-w-[1.5rem] px-0.5 text-center text-[15px] font-semibold tabular-nums text-navy">
+      <span className="min-w-[1.5rem] px-0.5 text-center text-[15px] font-semibold tabular-nums text-text-primary">
         {quantity}
       </span>
       <button
         type="button"
         onClick={onIncrement}
         aria-label="Increase quantity"
-        className="flex size-8 items-center justify-center rounded-full bg-[#9d174d] text-white shadow-sm ring-1 ring-[#9d174d]/25 transition-colors hover:bg-[#831843]"
+        className="flex size-8 items-center justify-center rounded-full bg-orange text-white shadow-sm transition-colors hover:brightness-110"
       >
         <Plus className="size-4" strokeWidth={2.75} aria-hidden />
       </button>
@@ -357,20 +357,20 @@ function BuildAPlate({
   ]
 
   return (
-    <section className="relative mb-4 rounded-3xl border border-gray-100 bg-white p-4 shadow-[0_10px_40px_rgb(0,0,0,0.06)]">
+    <section className="relative mb-4 rounded-3xl border border-sage-border/60 bg-surface-card p-4 shadow-[0_10px_40px_rgb(0,0,0,0.06)]">
       <div className="mb-4 flex items-start justify-between gap-2">
         <div>
-          <h2 className="flex items-center gap-1.5 text-[16px] font-bold text-navy">
-            <Sparkles className="size-4 text-orange" strokeWidth={2.5} />
+          <h2 className="flex items-center gap-1.5 text-[16px] font-bold text-text-primary">
+            <Sparkles className="size-4 text-pear-accent" strokeWidth={2.5} />
             Build-A-Plate
           </h2>
-          <p className="mt-0.5 text-[11px] text-text-muted">
+          <p className="mt-0.5 text-[11px] text-text-secondary">
             Pick your basics. No reading required.
           </p>
         </div>
         <button
           type="button"
-          className="shrink-0 rounded-full bg-navy px-4 py-2 text-[11px] font-bold text-white"
+          className="shrink-0 rounded-full bg-orange px-4 py-2 text-[11px] font-bold text-white transition hover:brightness-110"
         >
           MATCH
         </button>
@@ -379,10 +379,10 @@ function BuildAPlate({
       <div className="grid grid-cols-3 gap-2">
         {slots.map(({ label, slot }) => (
           <div key={label} className="text-center">
-            <p className="mb-1.5 text-[10px] font-bold tracking-wide text-orange">
+            <p className="mb-1.5 text-[10px] font-bold tracking-wide text-pear-accent">
               {label}
             </p>
-            <div className="overflow-hidden rounded-2xl ring-1 ring-black/[0.06]">
+            <div className="overflow-hidden rounded-2xl border border-sage-border/60">
               <img
                 src={slot.image}
                 alt=""
@@ -390,7 +390,7 @@ function BuildAPlate({
                 loading="lazy"
               />
             </div>
-            <p className="mt-1.5 text-[11px] font-semibold text-navy">
+            <p className="mt-1.5 text-[11px] font-semibold text-text-primary">
               {slot.name}
             </p>
           </div>

@@ -52,7 +52,7 @@ const vendors = CHEFS.map((c) => ({
 export function HomeScreen() {
   return (
     <main className="min-h-0 flex-1 overflow-y-auto px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-3 scrollbar-hide">
-      <div className="sticky top-0 z-40 -mx-4 mb-3 flex justify-end bg-gradient-to-b from-cream from-80% to-transparent px-4 pb-2 pt-1">
+      <div className="sticky top-0 z-40 -mx-4 mb-3 flex justify-end bg-gradient-to-b from-page-bg from-80% to-transparent px-4 pb-2 pt-1">
         <ThemePicker />
       </div>
       <LivePrepBanner />
@@ -70,7 +70,7 @@ function ReorderCard({ chefId }: { chefId: string }) {
   const navigate = useNavigate()
 
   return (
-    <article className="mb-5 flex items-center gap-3 rounded-3xl bg-white p-3 shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+    <article className="mb-5 flex items-center gap-3 rounded-3xl border border-sage-border/70 bg-surface-card p-3 shadow-[0_8px_28px_rgb(0,0,0,0.05)]">
       <button
         type="button"
         onClick={() => navigate(`/chef/${chefId}`)}
@@ -79,20 +79,20 @@ function ReorderCard({ chefId }: { chefId: string }) {
         <img
           src={DISH_IMG}
           alt=""
-          className="size-14 shrink-0 rounded-full object-cover ring-2 ring-white"
+          className="size-14 shrink-0 rounded-full object-cover ring-2 ring-thumb-ring"
         />
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-1.5">
-            <h2 className="text-[15px] font-bold leading-tight text-navy">
+            <h2 className="text-[15px] font-bold leading-tight text-text-primary">
               The Usual?
             </h2>
             <RotateCcw
-              className="size-3.5 shrink-0 text-orange"
+              className="size-3.5 shrink-0 text-pear-accent"
               strokeWidth={2.5}
               aria-hidden
             />
           </div>
-          <p className="mt-0.5 truncate text-[12px] text-text-muted">
+          <p className="mt-0.5 truncate text-[12px] text-text-secondary">
             Mama Karima&apos;s Mahshi • 80 EGP
           </p>
         </div>
@@ -100,7 +100,7 @@ function ReorderCard({ chefId }: { chefId: string }) {
       <button
         type="button"
         onClick={() => navigate(`/chef/${chefId}`)}
-        className="shrink-0 rounded-full bg-gradient-to-r from-reorder-from to-reorder-to px-4 py-2.5 text-[11px] font-bold tracking-wide text-white shadow-sm"
+        className="shrink-0 rounded-full bg-orange px-4 py-2.5 text-[11px] font-bold tracking-wide text-white shadow-md transition hover:brightness-110 active:brightness-95 active:scale-[0.98]"
       >
         REORDER
       </button>
@@ -113,21 +113,21 @@ function CategoryChips() {
     <div className="scrollbar-hide -mx-4 mb-6 flex gap-2 overflow-x-auto px-4 pb-1">
       <button
         type="button"
-        className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-navy px-4 py-2.5 text-[13px] font-semibold text-white"
+        className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-chip-selected px-4 py-2.5 text-[13px] font-semibold text-white transition hover:brightness-110"
       >
-        <Flame className="size-4 text-orange" strokeWidth={2.5} aria-hidden />
+        <Flame className="size-4 text-white" strokeWidth={2.5} aria-hidden />
         Zamalek&apos;s Obsession
       </button>
       <button
         type="button"
-        className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-gray-200 bg-white px-4 py-2.5 text-[13px] font-medium text-navy"
+        className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-sage-border bg-sage-soft px-4 py-2.5 text-[13px] font-medium text-text-primary transition hover:bg-surface-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange/40"
       >
-        <Check className="size-4 text-emerald-500" strokeWidth={2.5} aria-hidden />
+        <Check className="size-4 text-pear-accent" strokeWidth={2.5} aria-hidden />
         Vanguard Cooks
       </button>
       <button
         type="button"
-        className="shrink-0 rounded-full border border-gray-200 bg-white px-4 py-2.5 text-[13px] font-medium text-navy"
+        className="shrink-0 rounded-full border border-sage-border bg-sage-soft px-4 py-2.5 text-[13px] font-medium text-text-primary transition hover:bg-surface-card focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange/40"
       >
         Ready to Fly
       </button>
@@ -138,11 +138,11 @@ function CategoryChips() {
 function TasteCulture() {
   return (
     <section className="mb-6">
-      <h2 className="mb-3 text-lg font-bold text-navy">Taste the Culture</h2>
+      <h2 className="mb-3 text-lg font-bold text-text-primary">Taste the Culture</h2>
       <div className="scrollbar-hide -mx-4 flex gap-4 overflow-x-auto px-4 pb-2">
         {cultureItems.map((item) => (
           <div key={item.label} className="w-[72px] shrink-0 text-center">
-            <div className="mx-auto size-[68px] overflow-hidden rounded-full border-[3px] border-white shadow-md ring-1 ring-black/5">
+            <div className="mx-auto size-[68px] overflow-hidden rounded-full border-[3px] border-surface-card shadow-md ring-2 ring-thumb-ring">
               <img
                 src={item.img}
                 alt=""
@@ -150,7 +150,7 @@ function TasteCulture() {
                 loading="lazy"
               />
             </div>
-            <p className="mt-2 text-center text-[11px] font-semibold leading-tight text-navy">
+            <p className="mt-2 text-center text-[11px] font-semibold leading-tight text-text-primary">
               {item.label}
             </p>
           </div>
@@ -162,9 +162,9 @@ function TasteCulture() {
 
 function BlindTastingBanner() {
   return (
-    <section className="relative mb-5 overflow-hidden rounded-3xl bg-navy px-5 py-5 pr-36 text-white shadow-lg">
+    <section className="relative mb-5 overflow-hidden rounded-3xl bg-promo-bg px-5 py-5 pr-36 text-white shadow-lg">
       <div className="relative z-10 max-w-[220px]">
-        <p className="mb-2 flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-orange">
+        <p className="mb-2 flex items-center gap-1.5 text-[10px] font-bold tracking-widest text-pear-accent">
           <Sparkles className="size-3.5" strokeWidth={2.5} aria-hidden />
           TASTE GENOME™
         </p>
@@ -177,7 +177,7 @@ function BlindTastingBanner() {
         </p>
       </div>
       <div
-        className="absolute -right-2 top-1/2 z-0 flex size-[100px] -translate-y-1/2 items-center justify-center rounded-2xl bg-gradient-to-br from-orange to-orange-soft shadow-[0_0_40px_var(--app-blind-glow)]"
+        className="absolute -right-2 top-1/2 z-0 flex size-[100px] -translate-y-1/2 items-center justify-center rounded-2xl bg-gradient-to-br from-pear-accent to-orange-soft shadow-[0_0_40px_var(--app-blind-glow)]"
         style={{ transform: 'translateY(-50%) rotate(8deg)' }}
         aria-hidden
       >
@@ -189,12 +189,12 @@ function BlindTastingBanner() {
 
 function RecoveryCard() {
   return (
-    <article className="mb-8 rounded-3xl bg-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
+    <article className="mb-8 rounded-3xl border border-sage-border/60 bg-surface-honey p-4 shadow-[0_8px_28px_rgb(0,0,0,0.04)]">
       <div className="flex items-center gap-2">
-        <Activity className="size-5 text-orange" strokeWidth={2.5} aria-hidden />
-        <h3 className="text-[15px] font-bold text-navy">Recovery Meals</h3>
+        <Activity className="size-5 text-pear-accent" strokeWidth={2.5} aria-hidden />
+        <h3 className="text-[15px] font-bold text-text-primary">Recovery Meals</h3>
       </div>
-      <p className="mt-1 text-[10px] font-semibold tracking-wider text-text-muted">
+      <p className="mt-1 text-[10px] font-semibold tracking-wider text-text-secondary">
         SYNC&apos;D: STRENGTH TRAINING
       </p>
     </article>
@@ -204,8 +204,8 @@ function RecoveryCard() {
 function LivePrepBanner() {
   return (
     <div className="mb-5 flex items-center gap-3 rounded-2xl bg-gradient-to-r from-live-from via-live-via to-live-to px-4 py-3.5 shadow-md">
-      <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
-        <Flame className="size-5 text-orange" strokeWidth={2.5} aria-hidden />
+      <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-live-icon-well shadow-inner backdrop-blur-[2px]">
+        <Flame className="size-5 text-white" strokeWidth={2.5} aria-hidden />
       </div>
       <div className="min-w-0 text-white">
         <p className="text-[14px] font-bold leading-tight">● Live Prep</p>
@@ -221,11 +221,11 @@ function VanguardSection() {
   return (
     <section className="pb-4">
       <div className="mb-4 flex items-start justify-between gap-3">
-        <h2 className="text-lg font-bold leading-tight text-navy">
+        <h2 className="text-lg font-bold leading-tight text-text-primary">
           Kitchy Vanguard
         </h2>
-        <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-wide text-emerald-800 ring-1 ring-emerald-100">
-          <Check className="size-3 text-emerald-600" strokeWidth={3} aria-hidden />
+        <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-sage-soft px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-wide text-text-primary ring-1 ring-sage-border">
+          <Check className="size-3 text-pear-accent" strokeWidth={3} aria-hidden />
           KITCHY Quality Seal
         </span>
       </div>
@@ -246,10 +246,10 @@ function VendorCard({ vendor }: { vendor: Vendor }) {
   const navigate = useNavigate()
   const badgeStyles = {
     green:
-      'bg-emerald-50 text-emerald-800 ring-emerald-100/80',
+      'bg-sage-soft text-text-primary ring-sage-border/90',
     orange:
-      'bg-orange-50 text-orange-900 ring-orange-100/80',
-    blue: 'bg-sky-50 text-sky-900 ring-sky-100/80',
+      'bg-surface-honey text-orange ring-sage-border/80',
+    blue: 'bg-sage-soft text-navy-muted ring-sage-border/90',
   } as const
 
   const openMenu = () => navigate(`/chef/${vendor.id}`)
@@ -265,7 +265,7 @@ function VendorCard({ vendor }: { vendor: Vendor }) {
           openMenu()
         }
       }}
-      className="cursor-pointer overflow-hidden rounded-3xl bg-white shadow-[0_10px_40px_rgb(0,0,0,0.08)] ring-1 ring-black/[0.04] transition-transform active:scale-[0.99]"
+      className="cursor-pointer overflow-hidden rounded-3xl border border-sage-border/50 bg-surface-card shadow-[0_10px_36px_rgb(0,0,0,0.06)] transition-transform active:scale-[0.99]"
     >
       <div className="relative aspect-[16/10] w-full">
         <img
@@ -276,7 +276,7 @@ function VendorCard({ vendor }: { vendor: Vendor }) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         {vendor.live ? (
-          <div className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-red-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+          <div className="absolute right-3 top-3 flex items-center gap-1 rounded-md bg-live-badge px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
             <span className="size-1.5 rounded-full bg-white" aria-hidden />
             LIVE
           </div>
@@ -297,13 +297,13 @@ function VendorCard({ vendor }: { vendor: Vendor }) {
               </p>
             </div>
           </div>
-          <div className="flex shrink-0 items-center gap-0.5 rounded-full bg-white/95 px-2 py-1 pl-1.5 shadow-md ring-1 ring-black/5">
+          <div className="flex shrink-0 items-center gap-0.5 rounded-full border border-sage-border/60 bg-surface-card/95 px-2 py-1 pl-1.5 shadow-md backdrop-blur-sm">
             <Star
-              className="size-3.5 fill-amber-400 text-amber-400"
+              className="size-3.5 fill-pear-accent text-pear-accent"
               strokeWidth={0}
               aria-hidden
             />
-            <span className="pr-0.5 text-[12px] font-bold text-navy">
+            <span className="pr-0.5 text-[12px] font-bold text-text-primary">
               {vendor.rating}
             </span>
           </div>
@@ -317,13 +317,13 @@ function VendorCard({ vendor }: { vendor: Vendor }) {
               className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-semibold ring-1 ${badgeStyles[b.tone]}`}
             >
               {b.tone === 'green' ? (
-                <Check className="size-3 text-emerald-600" strokeWidth={2.5} aria-hidden />
+                <Check className="size-3 text-pear-accent" strokeWidth={2.5} aria-hidden />
               ) : null}
               {b.label}
             </span>
           ))}
         </div>
-        <div className="flex items-center justify-between gap-2 border-t border-gray-100 pt-3">
+        <div className="flex items-center justify-between gap-2 border-t border-border-subtle pt-3">
           {vendor.ordersLine ? (
             <p className="text-[12px] text-text-muted">{vendor.ordersLine}</p>
           ) : null}
@@ -333,7 +333,7 @@ function VendorCard({ vendor }: { vendor: Vendor }) {
               e.stopPropagation()
               openMenu()
             }}
-            className={`text-[13px] font-bold text-navy underline-offset-2 hover:underline ${vendor.ordersLine ? '' : 'ml-auto'}`}
+            className={`text-[13px] font-bold text-orange underline-offset-2 transition hover:text-orange-soft hover:underline ${vendor.ordersLine ? '' : 'ml-auto'}`}
           >
             Lock in Delivery
           </button>

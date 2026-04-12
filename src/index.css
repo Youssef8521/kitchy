@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-/* Default palette before JS runs (matches themes.ts default) */
+/* Defaults before JS (aligned with default theme + resolver fallbacks) */
 :root {
   --app-cream: #fdfbf7;
   --app-navy: #1a2744;
@@ -15,6 +15,22 @@
   --app-live-to: #f5c542;
   --app-blind-glow: rgba(232, 107, 43, 0.55);
   --app-chrome: #ebe8e2;
+  --app-page-bg: var(--app-cream);
+  --app-surface-card: #ffffff;
+  --app-surface-honey: #ffffff;
+  --app-text-primary: var(--app-navy);
+  --app-text-secondary: var(--app-text-muted);
+  --app-border-subtle: rgba(15, 23, 42, 0.08);
+  --app-sage-soft: #f3f4f6;
+  --app-sage-border: #e5e7eb;
+  --app-nav-inactive: var(--app-text-muted);
+  --app-pear-accent: var(--app-orange-soft);
+  --app-promo-bg: var(--app-navy);
+  --app-chip-selected-bg: var(--app-navy);
+  --app-live-badge: var(--app-orange);
+  --app-cart-badge: var(--app-orange-soft);
+  --app-thumb-ring: rgba(0, 0, 0, 0.06);
+  --app-live-icon-well: rgba(255, 255, 255, 0.22);
 }
 
 @theme {
@@ -31,6 +47,22 @@
   --color-live-from: var(--app-live-from);
   --color-live-via: var(--app-live-via);
   --color-live-to: var(--app-live-to);
+  --color-page-bg: var(--app-page-bg);
+  --color-surface-card: var(--app-surface-card);
+  --color-surface-honey: var(--app-surface-honey);
+  --color-text-primary: var(--app-text-primary);
+  --color-text-secondary: var(--app-text-secondary);
+  --color-border-subtle: var(--app-border-subtle);
+  --color-sage-soft: var(--app-sage-soft);
+  --color-sage-border: var(--app-sage-border);
+  --color-nav-inactive: var(--app-nav-inactive);
+  --color-pear-accent: var(--app-pear-accent);
+  --color-promo-bg: var(--app-promo-bg);
+  --color-chip-selected: var(--app-chip-selected-bg);
+  --color-live-badge: var(--app-live-badge);
+  --color-cart-badge: var(--app-cart-badge);
+  --color-thumb-ring: var(--app-thumb-ring);
+  --color-live-icon-well: var(--app-live-icon-well);
 }
 
 @layer base {
@@ -38,7 +70,7 @@
     @apply antialiased;
   }
   body {
-    @apply m-0 min-h-dvh bg-cream text-navy font-sans;
+    @apply m-0 min-h-dvh bg-page-bg font-sans text-text-primary;
   }
   #root {
     @apply min-h-dvh;

@@ -13,12 +13,12 @@ export function BottomNav() {
 
   const itemClass = (active: boolean) =>
     `flex flex-1 flex-col items-center gap-1 py-2 text-[10px] font-medium transition-colors ${
-      active ? 'text-orange' : 'text-text-muted'
+      active ? 'text-orange' : 'text-nav-inactive'
     }`
 
   return (
     <nav
-      className={`fixed bottom-0 left-1/2 z-50 flex w-full max-w-[390px] -translate-x-1/2 border-t border-gray-100 bg-white px-1 pt-1 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] ${BOTTOM_NAV_PAD}`}
+      className={`fixed bottom-0 left-1/2 z-50 flex w-full max-w-[390px] -translate-x-1/2 border-t border-sage-border bg-surface-card px-1 pt-1 shadow-[0_-4px_24px_rgba(0,0,0,0.05)] ${BOTTOM_NAV_PAD}`}
       aria-label="Main"
     >
       <NavLink
@@ -66,7 +66,7 @@ export function BottomNav() {
               />
               {cartBadge ? (
                 <span
-                  className={`absolute -right-2 -top-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-emerald-600 px-1 text-[9px] font-bold leading-none text-white shadow-sm ring-2 ring-white ${
+                  className={`absolute -right-2 -top-1 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-cart-badge px-1 text-[9px] font-bold leading-none text-text-primary shadow-sm ring-2 ring-surface-card ${
                     cartWide ? 'px-1.5' : ''
                   }`}
                 >

@@ -1,29 +1,10 @@
 import type { ThemeCssVars } from './types'
-
-const PREFIX = '--app-'
-
-const keys: (keyof ThemeCssVars)[] = [
-  'cream',
-  'navy',
-  'navyMuted',
-  'orange',
-  'orangeSoft',
-  'textMuted',
-  'reorderFrom',
-  'reorderTo',
-  'liveFrom',
-  'liveVia',
-  'liveTo',
-  'blindGlow',
-  'chrome',
-]
+import { resolveFullThemeCss } from './resolveFullThemeCss'
 
 export function applyThemeToDocument(vars: ThemeCssVars): void {
   const el = document.documentElement
-  for (const key of keys) {
-    const cssName =
-      PREFIX +
-      key.replace(/[A-Z]/g, (c) => '-' + c.toLowerCase())
-    el.style.setProperty(cssName, vars[key])
+  const flat = resolveFullThemeCss(vars)
+  for (const [key, value] of Object.entries(flat)) {
+    el.style.setProperty(key, value)
   }
 }

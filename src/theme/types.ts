@@ -15,6 +15,24 @@ export type ThemeCssVars = {
   blindGlow: string
   /** Page background outside the phone shell */
   chrome: string
+
+  /** Optional semantic tokens (Tomato 3 and future curated themes). */
+  pageBg?: string
+  surfaceCard?: string
+  surfaceHoney?: string
+  textPrimary?: string
+  textSecondary?: string
+  borderSubtle?: string
+  sageSoft?: string
+  sageBorder?: string
+  navInactive?: string
+  pearAccent?: string
+  promoBg?: string
+  chipSelectedBg?: string
+  liveBadge?: string
+  cartBadge?: string
+  thumbRing?: string
+  liveIconWell?: string
 }
 
 export type ThemeDefinition = {
