@@ -7,6 +7,7 @@ import {
   Sparkles,
   Star,
 } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CHEFS } from '../data/chefs'
 import { HomeHeader } from './HomeHeader'
@@ -49,10 +50,44 @@ const vendors = CHEFS.map((c) => ({
   ordersLine: c.ordersLine,
 }))
 
+const SCROLL_DELTA = 8
+
 export function HomeScreen() {
+  const mainRef = useRef<HTMLElement>(null)
+  const lastScrollTop = useRef(0)
+  const [addressCollapsed, setAddressCollapsed] = useState(false)
+
+  useEffect(() => {
+    const el = mainRef.current
+    if (!el) return
+
+    const onScroll = () => {
+      const st = el.scrollTop
+      const delta = st - lastScrollTop.current
+      lastScrollTop.current = st
+
+      if (st <= 4) {
+        setAddressCollapsed(false)
+        return
+      }
+
+      if (delta > SCROLL_DELTA) {
+        setAddressCollapsed(true)
+      } else if (delta < -SCROLL_DELTA) {
+        setAddressCollapsed(false)
+      }
+    }
+
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => el.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <main className="min-h-0 flex-1 overflow-y-auto px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-0 scrollbar-hide">
-      <HomeHeader />
+    <main
+      ref={mainRef}
+      className="min-h-0 flex-1 overflow-y-auto px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-0 scrollbar-hide"
+    >
+      <HomeHeader addressCollapsed={addressCollapsed} />
       <LivePrepBanner />
       <ReorderCard chefId="mama-karima" />
       <CategoryChips />

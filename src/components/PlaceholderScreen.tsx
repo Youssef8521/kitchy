@@ -1,6 +1,6 @@
 export function PlaceholderScreen({ title }: { title: string }) {
   return (
-    <main className="flex flex-1 flex-col items-center justify-center px-6 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-8">
+    <main className="flex min-h-0 flex-1 flex-col items-center justify-center overflow-y-auto px-6 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-8 scrollbar-hide">
       <p className="text-center text-lg font-bold text-text-primary">{title}</p>
       <p className="mt-1 text-center text-[13px] text-text-muted">
         Coming soon

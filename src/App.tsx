@@ -8,8 +8,13 @@ import { PlaceholderScreen } from './components/PlaceholderScreen'
 
 function AppLayout() {
   return (
-    <div className="min-h-dvh bg-chrome">
-      <div className="mx-auto flex min-h-dvh w-full max-w-[390px] flex-col bg-cream shadow-xl ring-1 ring-border-subtle">
+    <div className="flex min-h-dvh flex-col bg-chrome">
+      {/*
+        Fixed viewport height so the home <main> is the scroll container.
+        Otherwise the column grows with content and the document scrolls —
+        HomeScreen's scroll listener never sees scrollTop change.
+      */}
+      <div className="mx-auto flex h-dvh min-h-0 w-full max-w-[390px] flex-col overflow-hidden bg-cream shadow-xl ring-1 ring-border-subtle">
         <Outlet />
       </div>
       <BottomNav />

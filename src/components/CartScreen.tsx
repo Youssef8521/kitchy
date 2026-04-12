@@ -11,7 +11,7 @@ export function CartScreen() {
   )
 
   return (
-    <main className="flex flex-1 flex-col px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-6">
+    <main className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-6 scrollbar-hide">
       <h1 className="text-xl font-bold text-text-primary">Cart</h1>
       <p className="mt-0.5 text-[13px] text-text-muted">
         {totalItemCount === 0
