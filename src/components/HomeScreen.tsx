@@ -9,7 +9,7 @@ import {
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { CHEFS } from '../data/chefs'
-import { ThemePicker } from './ThemePicker'
+import { HomeHeader } from './HomeHeader'
 
 const DISH_IMG =
   'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=160&h=160&fit=crop'
@@ -51,10 +51,8 @@ const vendors = CHEFS.map((c) => ({
 
 export function HomeScreen() {
   return (
-    <main className="min-h-0 flex-1 overflow-y-auto px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-3 scrollbar-hide">
-      <div className="sticky top-0 z-40 -mx-4 mb-3 flex justify-end bg-gradient-to-b from-page-bg from-80% to-transparent px-4 pb-2 pt-1">
-        <ThemePicker />
-      </div>
+    <main className="min-h-0 flex-1 overflow-y-auto px-4 pb-[calc(5.75rem+env(safe-area-inset-bottom))] pt-0 scrollbar-hide">
+      <HomeHeader />
       <LivePrepBanner />
       <ReorderCard chefId="mama-karima" />
       <CategoryChips />
