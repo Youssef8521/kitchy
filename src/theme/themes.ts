@@ -255,6 +255,24 @@ export const seaStackPalette = {
   border: '#cfd8d3',
 } as const
 
+/**
+ * Neon Noir Blues — Desire / Dark Purple / Dark Cerulean / Medium Persian Blue / Rich Electric Blue.
+ * Hex values are taken directly from your reference image.
+ */
+export const neonNoirBluePalette = {
+  desire: '#ea404d',
+  darkPurple: '#311131',
+  darkCerulean: '#12447e',
+  mediumPersianBlue: '#0663aa',
+  richElectricBlue: '#0e92d2',
+  pageBg: '#f4efe5',
+  chrome: '#e7e0d4',
+  surface: '#fffdf8',
+  surfaceHoney: '#f7fbfa',
+  textMuted: '#5b6b71',
+  border: '#cfd8d3',
+} as const
+
 /** Legacy id from earlier builds → keeps localStorage working */
 const LEGACY_THEME_IDS: Record<string, string> = {
   botanical: 'pear-tomato-original',
@@ -1267,6 +1285,41 @@ export const themes: ThemeDefinition[] = [
       liveBadge: seaStackPalette.ocean,
       cartBadge: seaStackPalette.aqua,
       thumbRing: 'rgba(7, 21, 40, 0.10)',
+      liveIconWell: 'rgba(255, 255, 255, 0.18)',
+    },
+  },
+  {
+    id: 'neon-noir-blue',
+    label: 'Neon Noir Blue',
+    vars: {
+      cream: neonNoirBluePalette.pageBg,
+      chrome: neonNoirBluePalette.chrome,
+      navy: neonNoirBluePalette.darkPurple,
+      navyMuted: neonNoirBluePalette.darkCerulean,
+      orange: neonNoirBluePalette.richElectricBlue,
+      orangeSoft: neonNoirBluePalette.desire,
+      textMuted: neonNoirBluePalette.textMuted,
+      reorderFrom: neonNoirBluePalette.darkCerulean,
+      reorderTo: neonNoirBluePalette.richElectricBlue,
+      liveFrom: neonNoirBluePalette.desire,
+      liveVia: neonNoirBluePalette.richElectricBlue,
+      liveTo: neonNoirBluePalette.mediumPersianBlue,
+      blindGlow: 'rgba(14, 146, 210, 0.28)',
+      pageBg: neonNoirBluePalette.pageBg,
+      surfaceCard: neonNoirBluePalette.surface,
+      surfaceHoney: neonNoirBluePalette.surfaceHoney,
+      textPrimary: neonNoirBluePalette.darkPurple,
+      textSecondary: neonNoirBluePalette.textMuted,
+      borderSubtle: neonNoirBluePalette.border,
+      sageSoft: neonNoirBluePalette.surfaceHoney,
+      sageBorder: neonNoirBluePalette.border,
+      navInactive: neonNoirBluePalette.mediumPersianBlue,
+      pearAccent: neonNoirBluePalette.desire,
+      promoBg: neonNoirBluePalette.darkCerulean,
+      chipSelectedBg: neonNoirBluePalette.richElectricBlue,
+      liveBadge: neonNoirBluePalette.desire,
+      cartBadge: neonNoirBluePalette.desire,
+      thumbRing: 'rgba(49, 17, 49, 0.10)',
       liveIconWell: 'rgba(255, 255, 255, 0.18)',
     },
   },
