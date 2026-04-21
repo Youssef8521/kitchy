@@ -3,7 +3,9 @@ import { CartProvider } from './cart/CartContext'
 import { BottomNav } from './components/BottomNav'
 import { CartScreen } from './components/CartScreen'
 import { ChefMenuScreen } from './components/ChefMenuScreen'
+import { CheckoutScreen } from './components/CheckoutScreen'
 import { HomeScreen } from './components/HomeScreen'
+import { OrderDetailsScreen } from './components/OrderDetailsScreen'
 import { PlaceholderScreen } from './components/PlaceholderScreen'
 
 function AppLayout() {
@@ -34,9 +36,10 @@ function App() {
               path="/search"
               element={<PlaceholderScreen title="Search" />}
             />
-            <Route path="/pay" element={<PlaceholderScreen title="Pay" />} />
+            <Route path="/pay" element={<CheckoutScreen />} />
             <Route path="/more" element={<PlaceholderScreen title="More" />} />
             <Route path="/chef/:chefId" element={<ChefMenuScreen />} />
+            <Route path="/order/:orderId" element={<OrderDetailsScreen />} />
           </Route>
         </Routes>
       </CartProvider>

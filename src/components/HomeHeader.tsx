@@ -1,7 +1,6 @@
 import { ChevronDown, Search } from 'lucide-react'
 import { ThemePicker } from './ThemePicker'
-
-const EXAMPLE_ADDRESS = 'Ain Shams, Matareya'
+import { EXAMPLE_ADDRESS } from '../data/exampleAddress'
 
 export type HomeHeaderProps = {
   /** When true, the address row is collapsed; search stays visible and sticky */

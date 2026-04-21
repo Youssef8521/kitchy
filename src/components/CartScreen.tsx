@@ -67,12 +67,18 @@ export function CartScreen() {
               </li>
             ))}
           </ul>
-          <div className="mt-6 rounded-2xl border border-sage-border/60 bg-surface-card p-4 shadow-md">
-            <div className="flex items-center justify-between text-[15px] font-bold text-text-primary">
-              <span>Subtotal</span>
-              <span className="text-orange">{subtotal} EGP</span>
-            </div>
-          </div>
+          <Link
+            to="/pay"
+            className="mt-6 flex items-center justify-between rounded-2xl border border-sage-border/60 bg-surface-card p-4 shadow-md transition hover:bg-sage-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange/40"
+            aria-label={`Checkout. Total ${subtotal} EGP`}
+          >
+            <span className="text-[15px] font-extrabold text-text-primary">
+              Checkout
+            </span>
+            <span className="text-[15px] font-extrabold text-orange">
+              {subtotal} EGP
+            </span>
+          </Link>
         </>
       )}
     </main>
