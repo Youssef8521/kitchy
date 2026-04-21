@@ -211,6 +211,50 @@ export const tomato2Palette = {
   chromeHoney: '#f0d9a8',
 } as const
 
+/**
+ * Butter-to-bronze stack — Cream / Lemon / Butter / Daffodil / Gold / Honey / Mustard / Amber / Maize / Bronze.
+ * Derived from your reference swatches; tuned for readable ink + warm accents.
+ */
+export const butterStackPalette = {
+  cream: '#f7f0d7',
+  lemon: '#f4e6a1',
+  butter: '#f0d25a',
+  daffodil: '#e2bf2f',
+  gold: '#c89f22',
+  honey: '#b7841a',
+  mustard: '#9f6d16',
+  amber: '#865a13',
+  maize: '#6a4710',
+  bronze: '#4a3010',
+  chrome: '#efe4c9',
+  surface: '#fffdf6',
+  surfaceHoney: '#fff7de',
+  textMuted: '#7a6953',
+  border: '#d8caa6',
+} as const
+
+/**
+ * Shades of Sea — Ice / Aqua / Teal / Ocean / Azure / Cobalt / Aegean / Navy / Deep.
+ * Tuned for crisp light surfaces with deep ocean ink and cool aqua accents.
+ */
+export const seaStackPalette = {
+  ice: '#d6eee6',
+  aqua: '#bfe3da',
+  teal: '#4aa2a4',
+  ocean: '#1f6f83',
+  azure: '#1a4f6b',
+  cobalt: '#133a5a',
+  aegean: '#0f2c4a',
+  navy: '#0b1f35',
+  deep: '#071528',
+  pageBg: '#f4efe5',
+  chrome: '#e7e0d4',
+  surface: '#fffdf8',
+  surfaceHoney: '#f7fbfa',
+  textMuted: '#5b6b71',
+  border: '#cfd8d3',
+} as const
+
 /** Legacy id from earlier builds → keeps localStorage working */
 const LEGACY_THEME_IDS: Record<string, string> = {
   botanical: 'pear-tomato-original',
@@ -1154,6 +1198,76 @@ export const themes: ThemeDefinition[] = [
       cartBadge: tomato2Palette.pear,
       thumbRing: 'rgba(249, 205, 144, 0.45)',
       liveIconWell: 'rgba(255, 255, 255, 0.2)',
+    },
+  },
+  {
+    id: 'butter-stack',
+    label: 'Butter Stack',
+    vars: {
+      cream: butterStackPalette.cream,
+      chrome: butterStackPalette.chrome,
+      navy: butterStackPalette.bronze,
+      navyMuted: butterStackPalette.maize,
+      orange: butterStackPalette.daffodil,
+      orangeSoft: butterStackPalette.butter,
+      textMuted: butterStackPalette.textMuted,
+      reorderFrom: butterStackPalette.amber,
+      reorderTo: butterStackPalette.gold,
+      liveFrom: butterStackPalette.butter,
+      liveVia: butterStackPalette.daffodil,
+      liveTo: butterStackPalette.gold,
+      blindGlow: 'rgba(226, 191, 47, 0.35)',
+      pageBg: butterStackPalette.cream,
+      surfaceCard: butterStackPalette.surface,
+      surfaceHoney: butterStackPalette.surfaceHoney,
+      textPrimary: butterStackPalette.bronze,
+      textSecondary: butterStackPalette.textMuted,
+      borderSubtle: butterStackPalette.border,
+      sageSoft: butterStackPalette.lemon,
+      sageBorder: butterStackPalette.border,
+      navInactive: butterStackPalette.mustard,
+      pearAccent: butterStackPalette.butter,
+      promoBg: butterStackPalette.maize,
+      chipSelectedBg: butterStackPalette.daffodil,
+      liveBadge: butterStackPalette.daffodil,
+      cartBadge: butterStackPalette.butter,
+      thumbRing: 'rgba(74, 48, 16, 0.10)',
+      liveIconWell: 'rgba(255, 255, 255, 0.18)',
+    },
+  },
+  {
+    id: 'sea-stack',
+    label: 'Shades of Sea',
+    vars: {
+      cream: seaStackPalette.pageBg,
+      chrome: seaStackPalette.chrome,
+      navy: seaStackPalette.deep,
+      navyMuted: seaStackPalette.navy,
+      orange: seaStackPalette.ocean,
+      orangeSoft: seaStackPalette.aqua,
+      textMuted: seaStackPalette.textMuted,
+      reorderFrom: seaStackPalette.azure,
+      reorderTo: seaStackPalette.ocean,
+      liveFrom: seaStackPalette.teal,
+      liveVia: seaStackPalette.aqua,
+      liveTo: seaStackPalette.ice,
+      blindGlow: 'rgba(31, 111, 131, 0.26)',
+      pageBg: seaStackPalette.pageBg,
+      surfaceCard: seaStackPalette.surface,
+      surfaceHoney: seaStackPalette.surfaceHoney,
+      textPrimary: seaStackPalette.deep,
+      textSecondary: seaStackPalette.textMuted,
+      borderSubtle: seaStackPalette.border,
+      sageSoft: seaStackPalette.ice,
+      sageBorder: seaStackPalette.border,
+      navInactive: seaStackPalette.cobalt,
+      pearAccent: seaStackPalette.aqua,
+      promoBg: seaStackPalette.aegean,
+      chipSelectedBg: seaStackPalette.ocean,
+      liveBadge: seaStackPalette.ocean,
+      cartBadge: seaStackPalette.aqua,
+      thumbRing: 'rgba(7, 21, 40, 0.10)',
+      liveIconWell: 'rgba(255, 255, 255, 0.18)',
     },
   },
 ]
